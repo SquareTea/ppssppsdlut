@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=PPSSPPSDLUT
+Exec=PPSSPPSDL %U
+Icon=assets/logo.svg
+Terminal=false
+Type=Application
+X-Lomiri-Touch=true
+X-Lomiri-Supported-Orientations=Landscape

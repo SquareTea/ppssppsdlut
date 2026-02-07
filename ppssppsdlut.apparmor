@@ -1,0 +1,22 @@
+{
+    "policy_groups": [
+        "audio",
+        "networking",
+	"camera",
+        "keep-display-on"
+    ],
+    "policy_version": 20.04,
+    "read_path": [
+        "@{HOME}/.config/ppsspp/*",
+        "@{HOME}/",
+        "/tmp/",
+        "/usr/share/alsa/alsa.conf",
+	"/dev/video[0-1]"
+    ],
+    "write_path": [
+        "/tmp/",
+        "@{HOME}/.config/",
+        "@{HOME}/.config/ppsspp"
+    ]
+}
+

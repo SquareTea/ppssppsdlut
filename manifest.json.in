@@ -1,0 +1,15 @@
+{
+    "name": "ppssppsdlut.tea",
+    "description": "a arm64 ppsspp for ut",
+    "architecture": "@CLICK_ARCH@",
+    "title": "PPSSPPSDLUT",
+    "hooks": {
+        "ppssppsdlut": {
+            "apparmor": "ppssppsdlut.apparmor",
+            "desktop":  "ppssppsdlut.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "tea <square_tea@murena.io>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}

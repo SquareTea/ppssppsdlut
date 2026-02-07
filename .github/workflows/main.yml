@@ -1,0 +1,47 @@
+name: CI
+
+on:
+
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+jobs:
+  BuildKernel:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3        
+      - name: clickable
+        run: |
+              sudo apt update
+              sudo apt install docker.io adb git python3 pipx python3-setuptools build-essential cmake libgl1-mesa-dev libsdl2-dev libsdl2-ttf-dev libfontconfig1-dev libvulkan-dev libglew-dev -y
+              pipx install clickable-ut
+              echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+              source ~/.bashrc
+              git clone https://github.com/SquareTea/ppsspp
+              sudo systemctl start docker
+              sudo usermod -a -G docker $(users)
+              cd ppsspp
+              sudo chmod +x b.sh
+              ./b.sh --utarm64
+              cd ../
+              cp -rf ppsspp/build/assest assest
+              cp -rf ppsspp/build/PPSSPPSDL
+              newgrp docker
+              export ARCH=arm64
+              clickable setup
+              clickable
+
+      - name: upload precompiled binary
+        uses: actions/upload-artifact@master
+        with:
+            name: PPSSPPSDL
+            path: ppsspp/build/*
+
+      - name: upload clickablepkg
+        uses: actions/upload-artifact@master
+        with:
+            name: PPSSPPSDLUT
+            path: build/aarch64-linux-gnu/app/*.click
