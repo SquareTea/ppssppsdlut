@@ -9,7 +9,7 @@ cd ppsspp
 sudo chmod +x b.sh
 ./b.sh --utarm64
 cd ../
-cp -rf ppsspp/build/assets assets
+cp -rf ppsspp/build/assets/* assets/
 cp -rf ppsspp/build/PPSSPPSDL PPSSPPSDL
 newgrp docker
 export ARCH=arm64
